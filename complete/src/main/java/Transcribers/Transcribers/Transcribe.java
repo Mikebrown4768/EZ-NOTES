@@ -1,6 +1,6 @@
-package hello;
+package Transcribers;
 
-public class Greeter {
+public class Transcribe {
 	public String sayHello() {
 		return "Hello world!";
 	}
