@@ -1,0 +1,11 @@
+├── src
+│   └── main
+│       └── resources
+│           └── edu
+│               └── cmu
+│                   └── sphinx
+│                       └── models
+│                           └── en-us
+│                               ├── cmudict-en-us.dict
+│                               ├── en-us.lm.bin
+│                               └── en-us
