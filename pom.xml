@@ -23,6 +23,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
     </repository>
   </repositories>
 
+<dependencies>
   <dependency>
     <groupId>edu.cmu.sphinx</groupId>
     <artifactId>sphinx4-core</artifactId>
@@ -34,5 +35,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
     <artifactId>sphinx4-data</artifactId>
     <version>5prealpha-SNAPSHOT</version>
   </dependency>
+ </dependencies>
 
 </project>
