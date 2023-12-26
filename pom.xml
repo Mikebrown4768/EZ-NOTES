@@ -1,40 +1,41 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>EZ_NOTESfinal</groupId>
   <artifactId>EZ_NOTESfinal</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
-    <maven.compiler.source>18</maven.compiler.source>
-    <maven.compiler.target>18</maven.compiler.target>
+    <!-- Set Java version to 1.8 -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>snapshots-repo</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  <!-- Repositories and dependencies remain the same -->
 
 <dependencies>
-  <dependency>
-    <groupId>edu.cmu.sphinx</groupId>
-    <artifactId>sphinx4-core</artifactId>
-    <version>5prealpha-SNAPSHOT</version>
-  </dependency>
+    <!-- Other dependencies for your project -->
 
-  <dependency>
-    <groupId>edu.cmu.sphinx</groupId>
-    <artifactId>sphinx4-data</artifactId>
-    <version>5prealpha-SNAPSHOT</version>
-  </dependency>
- </dependencies>
+    <!-- Google Cloud Speech-to-Text API -->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-speech</artifactId>
+        <version>4.27.0</version> <!-- Replace with the latest version available -->
+    </dependency>
+
+    <!-- Google Cloud Core (required for Speech API) -->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-core</artifactId>
+        <version>2.0.0</version> <!-- Replace with the latest version available -->
+    </dependency>
+
+    <!-- Google Auth Library Credentials -->
+    <dependency>
+        <groupId>com.google.auth</groupId>
+        <artifactId>google-auth-library-credentials</artifactId>
+        <version>0.26.0</version> <!-- Replace with the latest version available -->
+    </dependency>
+</dependencies>
 
 </project>
