@@ -13,29 +13,23 @@
 
   <!-- Repositories and dependencies remain the same -->
 
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>libraries-bom</artifactId>
+      <version>26.29.0</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+
 <dependencies>
-    <!-- Other dependencies for your project -->
-
-    <!-- Google Cloud Speech-to-Text API -->
-    <dependency>
-        <groupId>com.google.cloud</groupId>
-        <artifactId>google-cloud-speech</artifactId>
-        <version>4.27.0</version> <!-- Replace with the latest version available -->
-    </dependency>
-
-    <!-- Google Cloud Core (required for Speech API) -->
-    <dependency>
-        <groupId>com.google.cloud</groupId>
-        <artifactId>google-cloud-core</artifactId>
-        <version>2.0.0</version> <!-- Replace with the latest version available -->
-    </dependency>
-
-    <!-- Google Auth Library Credentials -->
-    <dependency>
-        <groupId>com.google.auth</groupId>
-        <artifactId>google-auth-library-credentials</artifactId>
-        <version>0.26.0</version> <!-- Replace with the latest version available -->
-    </dependency>
+  <dependency>
+    <groupId>com.google.cloud</groupId>
+    <artifactId>google-cloud-speech</artifactId>
+  </dependency>
 </dependencies>
 
 </project>
