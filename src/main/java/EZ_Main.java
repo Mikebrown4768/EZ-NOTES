@@ -1,42 +1,46 @@
-import com.google.cloud.speech.v1.*;
-import com.google.protobuf.ByteString;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+// Imports the Google Cloud client library
+import com.google.cloud.speech.v1.RecognitionAudio;
+import com.google.cloud.speech.v1.RecognitionConfig;
+import com.google.cloud.speech.v1.RecognitionConfig.AudioEncoding;
+import com.google.cloud.speech.v1.RecognizeResponse;
+import com.google.cloud.speech.v1.SpeechClient;
+import com.google.cloud.speech.v1.SpeechRecognitionAlternative;
+import com.google.cloud.speech.v1.SpeechRecognitionResult;
+import java.util.List;
 
 public class EZ_Main {
-    public static void main(String[] args) throws Exception {
-        // Replace "path/to/audio/file.wav" with the path to your audio file
-        String audioFilePath = "path/to/audio/file.wav";
 
-        // Replace "your-google-cloud-api-key" with your actual API key
-        String apiKey = "your-google-cloud-api-key";
+  /** Demonstrates using the Speech API to transcribe an audio file. */
+  public static void main(String... args) throws Exception {
+    // Instantiates a client
+	  
+	  String pathToJsonKeyFile = "/Users/jannetzane/Downloads/eznotes51-0588565a2196.json";
+      System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", pathToJsonKeyFile);  
+	  
+    try (SpeechClient speechClient = SpeechClient.create()) {
 
-        // Create a SpeechClient using your API key
-        try (SpeechClient speechClient = SpeechClient.create(SpeechSettings.newBuilder().setCredentialsProvider(FixedCredentialsProvider.create(ServiceAccountCredentials.fromStream(new FileInputStream("path/to/your/json/keyfile.json")))).build())) {
+      // The path to the audio file to transcribe
+      String gcsUri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw";
 
-            // Read the audio file
-            Path path = Paths.get(audioFilePath);
-            byte[] data = Files.readAllBytes(path);
-            ByteString audioBytes = ByteString.copyFrom(data);
+      // Builds the sync recognize request
+      RecognitionConfig config =
+          RecognitionConfig.newBuilder()
+              .setEncoding(AudioEncoding.LINEAR16)
+              .setSampleRateHertz(16000)
+              .setLanguageCode("en-US")
+              .build();
+      RecognitionAudio audio = RecognitionAudio.newBuilder().setUri(gcsUri).build();
 
-            // Build the recognition request
-            RecognitionConfig config =
-                    RecognitionConfig.newBuilder()
-                            .setEncoding(AudioEncoding.LINEAR16)
-                            .setSampleRateHertz(16000)
-                            .setLanguageCode("en-US")
-                            .build();
-            RecognitionAudio audio = RecognitionAudio.newBuilder().setContent(audioBytes).build();
+      // Performs speech recognition on the audio file
+      RecognizeResponse response = speechClient.recognize(config, audio);
+      List<SpeechRecognitionResult> results = response.getResultsList();
 
-            // Perform the speech recognition
-            RecognizeResponse response = speechClient.recognize(config, audio);
-
-            // Get and print the recognized text
-            for (SpeechRecognitionResult result : response.getResultsList()) {
-                System.out.println("Transcript: " + result.getAlternativesList().get(0).getTranscript());
-            }
-        }
+      for (SpeechRecognitionResult result : results) {
+        // There can be several alternative transcripts for a given chunk of speech. Just use the
+        // first (most likely) one here.
+        SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
+        System.out.printf("Transcription: %s%n", alternative.getTranscript());
+      }
     }
+  }
 }
