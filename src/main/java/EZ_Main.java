@@ -40,6 +40,8 @@ public class EZ_Main {
         // first (most likely) one here.
         SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
         System.out.printf("Transcription: %s%n", alternative.getTranscript());
+        String hello = alternative.getTranscript();
+        System.out.println(hello);
       }
     }
   }
