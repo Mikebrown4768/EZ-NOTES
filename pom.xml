@@ -1,35 +1,41 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>EZ_NOTESfinal</groupId>
-  <artifactId>EZ_NOTESfinal</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <properties>
-    <!-- Set Java version to 1.8 -->
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>EZ_NOTESfinal</groupId>
+    <artifactId>EZ_NOTESfinal</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <properties>
+        <!-- Set Java version to 1.8 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
-  <!-- Repositories and dependencies remain the same -->
+    <!-- Import the Google Cloud BOM for version management -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.cloud</groupId>
+                <artifactId>libraries-bom</artifactId>
+                <version>26.29.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-  <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>com.google.cloud</groupId>
-        <artifactId>libraries-bom</artifactId>
-        <version>26.29.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+        <!-- Use a version specified in the BOM -->
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-speech</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220924</version>
+        </dependency>
     </dependencies>
-  </dependencyManagement>
-
-  <dependencies>
-    <dependency>
-      <groupId>com.google.cloud</groupId>
-      <artifactId>google-cloud-speech</artifactId>
-    </dependency>
-  </dependencies>
-
 </project>
+
+
