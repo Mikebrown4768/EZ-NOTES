@@ -1,15 +1,16 @@
 import com.google.cloud.speech.v1.*;
-import com.google.protobuf.ByteString;
+import com.google.cloud.speech.v1.RecognitionConfig.AudioEncoding;  // Add this import
 
 import javax.sound.sampled.*;
+import com.google.protobuf.ByteString;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class EZ_Class1 {
 
     public static void main(String[] args) {
-    	 String pathToJsonKeyFile = "/Users/jannetzane/Downloads/eznotes51-0588565a2196.json";
-         System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", pathToJsonKeyFile);  
+    	String pathToJsonKeyFile = "/Users/jannetzane/Downloads/eznotes51-0588565a2196.json";
+    	System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", pathToJsonKeyFile); 
 
         try (SpeechClient speechClient = SpeechClient.create()) {
             // Create a thread for audio capture
