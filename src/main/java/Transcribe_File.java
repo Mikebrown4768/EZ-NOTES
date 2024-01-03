@@ -12,7 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class EZ_Main {
+public class Transcribe_File {
 
     /** Demonstrates using the Speech API to transcribe an audio file. */
     public static void main(String... args) throws Exception {

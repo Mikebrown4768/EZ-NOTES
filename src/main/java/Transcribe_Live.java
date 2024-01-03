@@ -6,7 +6,7 @@ import com.google.protobuf.ByteString;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
-public class EZ_Class1 {
+public class Transcribe_Live {
 
     public static void main(String[] args) {
     	String pathToJsonKeyFile = "/Users/jannetzane/Downloads/eznotes51-0588565a2196.json";
