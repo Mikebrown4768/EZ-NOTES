@@ -44,7 +44,7 @@ public class EZ_Main {
 
             for (SpeechRecognitionResult result : results) {
                 // There can be several alternative transcripts for a given chunk of speech.
-                // Just use the first (most likely) one here.
+                // Use the first (most likely) one here.
                 SpeechRecognitionAlternative alternative = result.getAlternativesList().get(0);
                 System.out.printf("Transcription: %s%n", alternative.getTranscript());
             }

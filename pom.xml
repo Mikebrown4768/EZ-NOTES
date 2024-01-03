@@ -5,37 +5,46 @@
     <groupId>EZ_NOTESfinal</groupId>
     <artifactId>EZ_NOTESfinal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <properties>
-        <!-- Set Java version to 1.8 -->
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <spring.boot.version>2.7.1</spring.boot.version>
+        <google.cloud.version>2.5.0</google.cloud.version>
     </properties>
 
-    <!-- Import the Google Cloud BOM for version management -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.google.cloud</groupId>
-                <artifactId>libraries-bom</artifactId>
-                <version>26.29.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
-        <!-- Use a version specified in the BOM -->
+        <!-- Spring Boot Starter Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+        <!-- Google Cloud Speech API -->
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-speech</artifactId>
+            <version>${google.cloud.version}</version>
         </dependency>
+
+        <!-- Google Cloud Language API -->
         <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20220924</version>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-language</artifactId>
+            <version>${google.cloud.version}</version>
         </dependency>
+
+        <!-- Other dependencies -->
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
 
 
